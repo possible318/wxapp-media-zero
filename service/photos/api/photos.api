@@ -1,0 +1,94 @@
+syntax = "v1"
+
+info(
+	title: "点赞接口"
+	desc: "图片点赞接口"
+	author: "Possible"
+	email: "794329728@qq.com"
+	version: "v1.0"
+)
+
+type (
+	PicItem {
+		ID     int    `json:"id"`
+		Pid    string `json:"pid"`
+		ItemId string `json:"itemId"`
+		Text   string `json:"text"`
+		Src    string `json:"src"`
+	}
+	PicList {
+		Page  int       `json:"page"`
+		Total int       `json:"total"`
+		List  []PicItem `json:"list"`
+	}
+)
+
+type (
+	PicsReq {
+		Page int `path:"page"`
+	}
+	PicsRes {
+		Code int     `json:"code"`
+		Msg  string  `json:"msg"`
+		Data PicList `json:"data"`
+	}
+)
+
+type (
+	StarReq {
+		ID int `path:"id"`
+	}
+	StarRes {
+		Code int       `json:"code"`
+		Msg  string    `json:"msg"`
+		Data []PicItem `json:"data"`
+	}
+)
+
+type (
+	DetailReq {
+		ID int `path:"id"`
+	}
+	DetailRes {
+		Code int     `json:"code"`
+		Msg  string  `json:"msg"`
+		Data PicItem `json:"data"`
+	}
+)
+
+// 列表
+@server(
+	group: photo
+)
+service photo-api {
+	@handler pics
+	get /pics/:page (PicsReq) returns (PicsRes)
+}
+
+// 点赞
+@server(
+	group: photo
+)
+service photo-api {
+	@handler star
+	get /star/:id (StarReq) returns (StarRes)
+}
+
+// 点踩
+@server(
+	group: photo
+)
+service photo-api {
+	@handler step
+	get /step/:id (StarReq) returns (StarRes)
+}
+
+//
+//// rpc 详情
+//@server(
+//	group: photo
+//)
+//service photo-api {
+//	@handler detail
+//	get /detail/:id (StarReq) returns (StarRes)
+//}

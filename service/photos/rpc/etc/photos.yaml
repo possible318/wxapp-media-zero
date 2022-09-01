@@ -1,0 +1,12 @@
+Name: photos.rpc
+ListenOn: 127.0.0.1:8080
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: photos.rpc
+Mysql:
+  DataSource: root:31894267@tcp(127.0.0.1:3306)/media?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+CacheRedis:
+  - Host: 127.0.0.1:6379
+    Pass:
+    Type: node

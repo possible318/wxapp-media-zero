@@ -1,0 +1,14 @@
+Name: photo-api
+Host: 0.0.0.0
+Port: 8888
+Mysql:
+  DataSource: root:31894267@tcp(127.0.0.1:3306)/media?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+CacheRedis:
+  - Host: 127.0.0.1:6379
+    Pass:
+    Type: node
+#PicsRpc:
+#  Etcd:
+#    Hosts:
+#      - 127.0.0.1:2379
+#    Key: photos.rpc

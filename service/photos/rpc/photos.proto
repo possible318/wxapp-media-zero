@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package photo;
+
+option go_package = "./photo";
+
+message PicsReq{
+  int64 id = 1;
+}
+
+message PicsRes{
+  int64 id = 1;
+  string pid = 2;
+  string ItemId = 3;
+  string Text = 4;
+  string Src = 5;
+}
+
+service pics {
+  rpc pics(PicsReq) returns(PicsRes);
+}
